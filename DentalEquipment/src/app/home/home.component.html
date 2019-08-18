@@ -1,0 +1,27 @@
+<ActionBar title="Home Page" class="action-bar"> </ActionBar>
+
+<GridLayout class="page">
+  <ListView [items]="items" class="list-group">
+    <ng-template let-item="item">
+      <StackLayout>
+        <Label
+          style="background-color:darkgray"
+          (tap)="dropDown(item)"
+          [text]="item.name"
+          class="list-group-item"
+        ></Label>
+        <StackLayout *ngIf="item.isVisible">
+          <ListView [items]="item.list" class="list-group">
+            <ng-template let-item="item">
+              <Label
+                [nsRouterLink]="['/task/purchace-order']"
+                [text]="item"
+                class="list-group-item"
+              ></Label>
+            </ng-template>
+          </ListView>
+        </StackLayout>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

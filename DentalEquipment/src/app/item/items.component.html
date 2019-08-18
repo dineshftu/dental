@@ -1,0 +1,44 @@
+<ActionBar title="Purchace Order Request" class="action-bar"> </ActionBar>
+<ScrollView>
+  <StackLayout class="input-field">
+    <TextField
+      hint="Enter Supplier"
+      [(ngModule)]="supplier"
+      autocorrect="false"
+      class="input input-border"
+    ></TextField>
+
+    <StackLayout class="input-field">
+      <TextField
+        hint="Enter Address"
+        [(ngModule)]="supplier"
+        autocorrect="false"
+        class="input input-border"
+      ></TextField>
+
+      <Label text="Enter Date: "></Label>
+      <DatePicker verticalAlignment="center"></DatePicker>
+
+      <TextField
+        hint="Enter Attn"
+        autocorrect="false"
+        class="input input-border"
+      ></TextField>
+
+      <Label text="Delivery on or Before :"></Label>
+      <DatePicker verticalAlignment="center"></DatePicker>
+
+      <TextField
+        hint="Description :"
+        autocorrect="false"
+        class="input input-border"
+      ></TextField>
+
+      <Button
+        text="Submit"
+        (tap)="submit()"
+        class="btn btn-primary btn-active"
+      ></Button>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>
