@@ -1,0 +1,46 @@
+<ActionBar class="action-bar">
+  <!--
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+  <NavigationButton
+    ios:visibility="collapsed"
+    icon="res://menu"
+    (tap)="onDrawerButtonTap()"
+  ></NavigationButton>
+  <!--
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+  <ActionItem
+    icon="res://navigation/menu"
+    android:visibility="collapsed"
+    (tap)="onDrawerButtonTap()"
+    ios.position="left"
+  >
+  </ActionItem>
+  <Label class="action-bar-title" text="Tasks"></Label>
+</ActionBar>
+
+<GridLayout class="page page-content">
+  <!-- <GridLayout [columns]="isTablet ? '*, 2*' : '*'"> -->
+  <GridLayout col="0" class="left-column">
+    <!-- The ListView shows on both tablets and phones. On tablets the list occupies the left-hand side
+    		of the screen, and one phones the ListView takes up the whole screen. -->
+    <ListView class="list-group" [items]="tasks" (itemTap)="select($event)">
+      <ng-template let-item="item">
+        style="background-color: green;"
+        <GridLayout
+          style="padding: 20;margin: 15"
+          class="list-group-item"
+          rows="*"
+          columns="auto, *"
+        >
+          <!-- <Image row="0" col="0" [src]="item.src" class="thumb"></Image> -->
+          <Label class="task" row="2" col="1" [text]="item"></Label>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+  </GridLayout>
+</GridLayout>
