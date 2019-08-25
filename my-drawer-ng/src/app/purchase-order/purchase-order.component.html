@@ -38,8 +38,8 @@
             <Label row="4" col="1" colSpan="5" text="Address" class="title-label"></Label>
             <TextField row="5" col="1" colSpan="5"  hint="Enter Address.."   class="scf-input"></TextField>
 
-            <Image row="4" col="5" rowSpan="2" class="icon-next" src="~/images/baseline_navigate_next_black_48.png"
-                (tap)="onOpenSearchAirportTap(false)"></Image>
+            <!-- <Image row="4" col="5" rowSpan="2" class="icon-next" src="~/images/baseline_navigate_next_black_48.png"
+                (tap)="onOpenSearchAirportTap(false)"></Image> -->
 
             <Label row="7" col="1" colSpan="2" text="Date" class="title-label"></Label>
 
@@ -55,9 +55,12 @@
 
             <Label row="11" col="1" colSpan="5" [hint]="termOfPayments" class="scf-input" editable="false" [text]="termOfPayments"
                 (tap)="onTypeServiceTap()"></Label>
-
+<!--
             <Image row="11" col="5" class="icon-next" src="~/images/baseline_keyboard_arrow_down_black_48.png"
-                (tap)="onTypeServiceTap()"></Image>
+                (tap)="onTypeServiceTap()"></Image> -->
+
+            <Button row="23" col="2" rowSpan="2" colSpan="3" text="Submit" (tap)="submit()" class="btn-previous" id="btnPrevious"></Button>
+
         </GridLayout>
 
 
@@ -65,16 +68,16 @@
         <Button row="0" col="0" text="Submit" (tap)="submit()" class="btn-previous" id="btnPrevious"></Button>
     </GridLayout> -->
 
-    <GridLayout row="0" col="0" rowSpan="4" colSpan="2" opacity="0" class="overlay" id="overlayGridLayout"></GridLayout>
+    <!-- <GridLayout row="0" col="0" rowSpan="4" colSpan="2" opacity="0" class="overlay" id="overlayGridLayout"></GridLayout> -->
 
-    <GridLayout row="0" col="0" rowSpan="4" colSpan="2" rows="auto, auto, auto" columns="*,*" verticalAlignment="center"
+    <!-- <GridLayout row="0" col="0" rowSpan="4" colSpan="2" rows="auto, auto, auto" columns="*,*" verticalAlignment="center"
         visibility="hidden" opacity="0" class="select-date" id="selectDateGridLayout">
         <Label row="0" col="0" colSpan="2" text="Select Date" class="title-select-date"></Label>
         <DatePicker row="1" col="0" colSpan="2" [(ngModel)]="dateSelector" (dateChange)="onDateChanged($event)"
             verticalAlignment="center"></DatePicker>
         <Button row="2" col="0" text="Cancel" class="btn-next" (tap)="onCloseSelectDate(true)"></Button>
         <Button row="2" col="1" text="OK" class="btn-previous" (tap)="onCloseSelectDate(false)"></Button>
-    </GridLayout>
+    </GridLayout> -->
 
 
 </GridLayout>

@@ -6,6 +6,7 @@ import {
 } from "@angular/core";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular";
 import { SearchSupplierComponent } from "../search-supplier/search-supplier.component";
+import { DatePickerComponent } from "../date-picker/date-picker.component";
 import { action } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
@@ -75,8 +76,26 @@ export class PurchaseOrderComponent implements OnInit {
                 // if (result.isFrom) {
                 this.supplier = result.supplier.name;
                 // } else {
-                this.toAirport = result.supplier.name;
+                // this.toAirport = result.supplier.name;
                 // }
+            });
+    }
+
+    onOpenSelectDate(isDepartureDate: boolean): void {
+        const options: ModalDialogOptions = {
+            viewContainerRef: this._vcRef,
+            context: {},
+            fullscreen: false
+        };
+
+        this._modalService
+            .showModal(DatePickerComponent, options)
+            .then((result: any) => {
+                if (isDepartureDate) {
+                    this.departureDate = result;
+                } else {
+                    this.returnDate = result;
+                }
             });
     }
 
@@ -109,45 +128,51 @@ export class PurchaseOrderComponent implements OnInit {
         alert("Order Purchased!");
     }
 
-    onDateChanged(args) {
-        let date: Date = args.value;
-        this.dateSelector = date;
-    }
+    // onDateChanged(args) {
+    //     const date: Date = args.value;
+    //     this.dateSelector = date;
+    // }
 
     // tslint:disable-next-line: adjacent-overload-signatures
-    onOpenSelectDate(isOnOpenDepartureDate: boolean) {
-        this.isOnOpenDepartureDate = isOnOpenDepartureDate;
+    // onOpenSelectDate(isOnOpenDepartureDate: boolean) {
+    //     this.isOnOpenDepartureDate = isOnOpenDepartureDate;
 
-        if (this.isOnOpenDepartureDate) {
-            this.dateSelector = this.departureDate;
-        } else {
-            this.dateSelector = this.returnDate;
-        }
+    //     if (this.isOnOpenDepartureDate) {
+    //         this.dateSelector = this.departureDate;
+    //     } else {
+    //         this.dateSelector = this.returnDate;
+    //     }
+    //     console.log("In fun *****");
 
-        this._selectDateGridLayout.visibility = <any>Visibility.visible;
-        this._selectDateGridLayout.className =
-            "select-date animate-bounceInUp-delay-0ms";
-        this._overlayGridLayout.animate({ opacity: 0.5, duration: 300 });
-    }
+    //     // this._selectDateGridLayout.visibility = <any>Visibility.visible;
+    //     console.log("In fun grid*****");
+    //     this._selectDateGridLayout.className =
+    //         "select-date animate-bounceInUp-delay-0ms";
+    //     console.log("In fun ****last*");
+    //     this._overlayGridLayout.animate({ opacity: 0.5, duration: 300 });
+    //     console.log("In fun ****last*");
+    // }
 
-    onCloseSelectDate(isCancel: boolean) {
-        if (!isCancel) {
-            this.selectedDate = this.dateSelector;
-            if (this.isOnOpenDepartureDate) {
-                this.departureDate = this.dateSelector;
-            } else {
-                this.returnDate = this.dateSelector;
-            }
-        }
+    // onCloseSelectDate(isCancel: boolean) {
+    //     if (!isCancel) {
+    //         this.selectedDate = this.dateSelector;
+    //         if (this.isOnOpenDepartureDate) {
+    //             this.departureDate = this.dateSelector;
+    //         } else {
+    //             this.returnDate = this.dateSelector;
+    //         }
+    //     }
 
-        this._selectDateGridLayout.className = "select-date";
-        this._overlayGridLayout
-            .animate({ opacity: 0, duration: 300 })
-            .then(() => {
-                this._selectDateGridLayout.visibility = <any>(
-                    Visibility.collapse
-                );
-            })
-            .catch(() => {});
-    }
+    //     this._selectDateGridLayout.className = "select-date";
+    //     this._overlayGridLayout
+    //         .animate({ opacity: 0, duration: 300 })
+    //         .then(() => {
+    //             this._selectDateGridLayout.visibility = <any>(
+    //                 Visibility.collapse
+    //             );
+    //         })
+    //         .catch(() => {
+    //             console.log("Something Wrong!");
+    //         });
+    // }
 }

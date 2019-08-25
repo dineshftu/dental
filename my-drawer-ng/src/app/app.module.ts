@@ -5,6 +5,7 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SearchSupplierComponent } from "./search-supplier/search-supplier.component";
+import { DatePickerComponent } from "./date-picker/date-picker.component";
 @NgModule({
     bootstrap: [AppComponent],
     imports: [
@@ -12,8 +13,8 @@ import { SearchSupplierComponent } from "./search-supplier/search-supplier.compo
         NativeScriptModule,
         NativeScriptUISideDrawerModule
     ],
-    declarations: [AppComponent, SearchSupplierComponent],
-    entryComponents: [SearchSupplierComponent],
+    declarations: [AppComponent, SearchSupplierComponent, DatePickerComponent],
+    entryComponents: [SearchSupplierComponent, DatePickerComponent],
     schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {}
