@@ -21,7 +21,6 @@ import * as app from "tns-core-modules/application";
     styleUrls: ["./purchase-order.component.css"]
 })
 export class PurchaseOrderComponent implements OnInit {
-    showReturn: boolean = false;
     supplier: string = "Select the Supplier..";
     address: string = "Enter the address";
     toAirport: string = "Enter Airport / City";
@@ -125,6 +124,7 @@ export class PurchaseOrderComponent implements OnInit {
     }
 
     submit() {
+        
         alert("Order Purchased!");
     }
 
