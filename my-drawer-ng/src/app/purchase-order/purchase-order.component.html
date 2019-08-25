@@ -24,13 +24,13 @@
 </ActionBar>
 <GridLayout>
 
-        <GridLayout class="page page-content" rows="22, 20,28, 16, 24,28, 16, 24,28, 16, 24,28,32,22,22" columns="32,*,32,24,*,32,32"
+        <GridLayout class="page page-content" rows="22, 20,28, 16, 24,28, 16, 24,28, 16, 24,28,32,22,22,22,22,22,22,22" columns="32,*,32,24,*,32,32"
             class="body scf-card animate-bounceInLeft-delay-0ms">
             <Label row="1" col="1" colSpan="5" text="Supplier" class="title-label"></Label>
             <Label row="2" col="1" colSpan="5" [text]="supplier" (tap)="onOpenSearchAirportTap(true)"
                 class="scf-input"></Label>
-            <Image row="1" col="5" rowSpan="2" class="icon-next" src="~/images/baseline_navigate_next_black_48.png"
-                (tap)="onOpenSearchAirportTap(true)"></Image>
+            <!-- <Image row="1" col="5" rowSpan="2" class="icon-next" src="~/images/baseline_navigate_next_black_48.png"
+                (tap)="onOpenSearchAirportTap(true)"></Image> -->
 
             <!-- <Label row="1" col="1" colSpan="5" text="Supplier" class="title-label"></Label>
             <Label row="2" col="1" colSpan="5" [text]="supplier" (tap)="onOpenSearchAirportTap(true)" class="scf-input"></Label> -->
@@ -51,14 +51,24 @@
             <Label row="8" col="3" colSpan="2" text='{{ returnDate | date:"y/M/d" }}' class="scf-input"
                 (tap)="onOpenSelectDate(false)"></Label>
 
-            <Label row="10" col="1" colSpan="5" text="Term Of Payment" class="title-label"></Label>
+            <Label row="10" col="1" colSpan="3" text="Term Of Payment" class="title-label"></Label>
 
-            <Label row="11" col="1" colSpan="5" [hint]="termOfPayments" class="scf-input" editable="false" [text]="termOfPayments"
+            <Label row="11" col="1" colSpan="3" [hint]="termOfPayments" class="scf-input" editable="false" [text]="termOfPayments"
                 (tap)="onTypeServiceTap()"></Label>
+
+            <Label row="10" col="4" colSpan="2" text="Attn" class="title-label"></Label>
+            <TextField row="11" col="4" colSpan="2" hint="Enter Attn.." class="scf-input"></TextField>
+
+            <Label row="12" col="1" colSpan="5" text="PO Type" class="title-label"></Label>
+
+            <Switch row="13" col="1" rowSpan="3" [checked]="isImport"  [(ngModel)]="isImport" class="m-14" (checkedChange)="toggleIsImport($event)"></Switch>
+            <Label row="14" col="2" colSpan="2" text="Import" class="title-label"></Label>
+            <Switch row="13" col="4" rowSpan="3" [checked]="isLocal"  [(ngModel)]="isLocal" class="m-14" (checkedChange)="toggleIsLocal($event)"></Switch>
+            <Label row="14" col="5" colSpan="2"  text="Local" class="title-label"></Label>
 
             <!-- <Label row="12" col="1" colSpan="5" hint="Fake" class="scf-input" editable="false" text="Fakse"
                 (tap)="onTypeServiceTap()"></Label> -->
-            <Button row="13" col="3" colSpan="2" rowSpan="2" text="Submit" (tap)="submit()" class="btn-previous" id="btnPrevious"></Button>
+            <Button row="18" col="3" colSpan="2" rowSpan="2" text="Submit" (tap)="submit()" class="btn-previous" id="btnPrevious"></Button>
 
         </GridLayout>
 

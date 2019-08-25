@@ -8,11 +8,12 @@ import { ModalDialogOptions, ModalDialogService } from "nativescript-angular";
 import { SearchSupplierComponent } from "../search-supplier/search-supplier.component";
 import { DatePickerComponent } from "../date-picker/date-picker.component";
 import { action } from "tns-core-modules/ui/dialogs";
-import { Page } from "tns-core-modules/ui/page";
+import { Page, EventData } from "tns-core-modules/ui/page";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Visibility } from "tns-core-modules/ui/enums";
 import * as app from "tns-core-modules/application";
+import { Switch } from "tns-core-modules/ui/switch/switch";
 
 @Component({
     selector: "PurchaseOrder",
@@ -24,7 +25,10 @@ export class PurchaseOrderComponent implements OnInit {
     supplier: string = "Select the Supplier..";
     address: string = "Enter the address";
     toAirport: string = "Enter Airport / City";
+    attn: string = "";
     termOfPayments: string = "Cash";
+    isImport: boolean = false;
+    isLocal: boolean = false;
     departureDate = new Date();
     returnDate = new Date();
     dateSelector = new Date();
@@ -47,19 +51,22 @@ export class PurchaseOrderComponent implements OnInit {
         this.returnDate.setDate(this.departureDate.getDate() + 2);
     }
 
-    // @Input()
-    set selectedDate(selectedDate: Date) {
-        if (selectedDate) {
-            if (this.isOnOpenDepartureDate) {
-                this.departureDate = selectedDate;
-            } else {
-                this.returnDate = selectedDate;
-            }
+    toggleIsImport(args: EventData) {
+        let mySwitch = args.object as Switch;
+        let isChecked = mySwitch.checked;
+        if (isChecked) {
+            this.isImport = isChecked;
+            this.isLocal = false;
         }
     }
 
-    toggleReturn() {
-        this.showReturn = !this.showReturn;
+    toggleIsLocal(args: EventData) {
+        let mySwitch = args.object as Switch;
+        let isChecked = mySwitch.checked;
+        if (isChecked) {
+            this.isLocal = isChecked;
+            this.isImport = false;
+        }
     }
 
     onOpenSearchAirportTap(isFrom: boolean): void {
@@ -124,7 +131,6 @@ export class PurchaseOrderComponent implements OnInit {
     }
 
     submit() {
-        
         alert("Order Purchased!");
     }
 
