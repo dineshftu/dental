@@ -13,7 +13,7 @@ android {
   defaultConfig {
     minSdkVersion 17
     generatedDensities = []
-    applicationId: "org.nativescript.mydrawerng"
+    applicationId= "org.nativescript.mydrawerng"
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"

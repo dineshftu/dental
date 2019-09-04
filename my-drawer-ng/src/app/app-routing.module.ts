@@ -3,29 +3,45 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/maintenance", pathMatch: "full" },
+    { path: "", redirectTo: "/home", pathMatch: "full" },
     {
-        path: "maintenance",
-        loadChildren: "~/app/maintenance/maintenance.module#MaintenanceModule"
+        path: "transfer",
+        loadChildren: "~/app/transfer-list/transfer.module#TransferListModule"
     },
-    { path: "tasks", loadChildren: "~/app/tasks/tasks.module#TasksModule" },
-    // { path: "search", loadChildren: "~/app/search/search.module#SearchModule" },
     {
-        path: "featured",
-        loadChildren: "~/app/featured/featured.module#FeaturedModule"
+        path: "home",
+        loadChildren: "~/app/home/home.module#HomeModule"
+    },
+    {
+        path: "my-invetory",
+        loadChildren:
+            "~/app/my-invetory/my-invetory.module#MyInventoryModule"
+    },
+    {
+        path: "main-invetory",
+        loadChildren:
+            "~/app/main-invetory/main-invetory.module#MainInventoryModule"
+    },
+    {
+        path: "customer-registraion",
+        loadChildren:
+            "~/app/customer-registraion/customer-registraion.module#CustomerRegistraionModule"
     },
     // {
-    //     path: "settings",
-    //     loadChildren: "~/app/settings/settings.module#SettingsModule"
+    //     path: "return-item",
+    //     loadChildren: "~/app/return-item/return-item.module#ReturnItemModule"
     // },
     {
-        path: "purchase-order",
-        loadChildren:
-            "~/app/purchase-order/purchase-order.module#PurchaseOrderModule"
+        path: "place-order",
+        loadChildren: "~/app/place-order/place-order.module#PlaceOrderModule"
+    },
+    {
+        path: "product-search",
+        loadChildren: "~/app/product-search/product-search.module#ProductSearchModule"
     },
     {
         path: "**",
-        redirectTo: "/featured"
+        redirectTo: "/home"
     }
 ];
 
@@ -33,4 +49,4 @@ const routes: Routes = [
     imports: [NativeScriptRouterModule.forRoot(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

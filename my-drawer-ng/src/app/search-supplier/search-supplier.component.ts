@@ -20,7 +20,8 @@ class DataItem {
 })
 export class SearchSupplierComponent implements OnInit {
     suppliers: ObservableArray<DataItem> = new ObservableArray<DataItem>();
-    // isFrom: boolean = false;
+    search: string = "Search for a ";
+    searchItem: string = "";
     private _searchedText: string = "";
     private arraySuppliers: Array<DataItem> = [];
 
@@ -30,15 +31,20 @@ export class SearchSupplierComponent implements OnInit {
         private router: RouterExtensions,
         private _activeRoute: ActivatedRoute
     ) {
-        this.arraySuppliers.push(new DataItem("Supplier 1"));
-        this.arraySuppliers.push(new DataItem("Supplier 2"));
-        this.arraySuppliers.push(new DataItem("Supplier 3"));
-        this.arraySuppliers.push(new DataItem("Supplier 4"));
-        this.arraySuppliers.push(new DataItem("Supplier 5"));
+        this.searchItem = this._params.context.search;
+        this.search = this.search + this.searchItem;
+
+        // for (let index = 0; index < 8; index++) {
+        this.arraySuppliers.push(new DataItem("Arya Stark"));
+        this.arraySuppliers.push(new DataItem("Robert Baretheon"));
+        this.arraySuppliers.push(new DataItem("Lyanna Mormont"));
+        this.arraySuppliers.push(new DataItem("Marlin Brelek"));
+        this.arraySuppliers.push(new DataItem("John Doe"));
+        this.arraySuppliers.push(new DataItem("Arthur Pereira"));
+
+        // }
 
         this.suppliers = new ObservableArray<DataItem>(this.arraySuppliers);
-
-        // this.isFrom = this._params.context.isFrom;
     }
 
     // tslint:disable-next-line: no-empty

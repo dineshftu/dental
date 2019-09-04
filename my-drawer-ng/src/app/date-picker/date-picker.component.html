@@ -3,6 +3,6 @@
     <Label row="0" col="0" colSpan="2" text="Select Date" class="title-select-date"></Label>
     <DatePicker row="1" col="0" colSpan="2" [(ngModel)]="dateSelector" (dateChange)="onDateChanged($event)"
         verticalAlignment="center"></DatePicker>
-    <Button row="2" col="0" text="Cancel" class="btn-next" (tap)="onCloseSelectDate(true)"></Button>
-    <Button row="2" col="1" text="OK" class="btn-previous" (tap)="onCloseSelectDate(false)"></Button>
+    <Button borderRadius=10 row="2" col="0" text="Cancel" class="btn-next" (tap)="onCloseSelectDate(true)"></Button>
+    <Button borderRadius=10 row="2" col="1" text="OK" class="btn-previous" (tap)="onCloseSelectDate(false)"></Button>
 </GridLayout>

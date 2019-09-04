@@ -6,15 +6,29 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SearchSupplierComponent } from "./search-supplier/search-supplier.component";
 import { DatePickerComponent } from "./date-picker/date-picker.component";
+import { AcceptTransferComponent } from "./accept-transfer/accept-transfer.component";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { ReturnItemComponent } from "./return-item/return-item.component"
 @NgModule({
     bootstrap: [AppComponent],
     imports: [
         AppRoutingModule,
         NativeScriptModule,
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule, NativeScriptFormsModule, NativeScriptCommonModule],
+    declarations: [
+        AppComponent,
+        SearchSupplierComponent,
+        DatePickerComponent,
+        AcceptTransferComponent,
+        ReturnItemComponent
     ],
-    declarations: [AppComponent, SearchSupplierComponent, DatePickerComponent],
-    entryComponents: [SearchSupplierComponent, DatePickerComponent],
+    entryComponents: [
+        SearchSupplierComponent,
+        DatePickerComponent,
+        AcceptTransferComponent,
+        ReturnItemComponent
+    ],
     schemas: [NO_ERRORS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,0 +1,51 @@
+<ActionBar class="action-bar">
+    <!--
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="My Inventory"></Label>
+</ActionBar>
+
+<GridLayout rows="10,48,*" columns="10,*,*,10" marginBottom=".3%" class="page page-content">
+    <GridLayout row="0" col="1" colspan="2" backgroundColor="lightgray"></GridLayout>
+    <GridLayout row="1" col="1" colspan="2" columns="*,5,*" backgroundColor="lightgray">
+        <!-- <Label style="font-size: 18; color: blue;text-align: center;" col="1" class="description-label"
+            text="Product Code" class="list-group-item-heading"></Label> -->
+        <Label col="0" text="Product Code" style="font-size: 18; color: blue;text-align: center;"></Label>
+        <Label col="2" text="Quantity" style="font-size: 18; color: blue;text-align: center;"></Label>
+    </GridLayout>
+
+    <ListView row="2" col="1" colspan="2" [items]="products" class="list-group">
+        <ng-template let-item="item">
+            <GridLayout columns="*,5,*" class="item list-group-item">
+                <Label col="0" style="text-align: center" [text]="item.id" class="list-group-item-text"></Label>
+                <Label col="2" style="text-align: center" [text]="item.quantity" class="list-group-item-text"></Label>
+
+                <!-- <Label col="1" colSpan="3"  [text]="item.id" class="list-group-item-heading"></Label>
+                <Label col="5"   [text]="item.quantity" class="list-group-item-heading"></Label> -->
+            </GridLayout>
+        </ng-template>
+    </ListView>
+
+    <!-- <TextView row="2" col="1" colSpan="2" [text]="description" [editable]="editState"></TextView> -->
+    <!-- <GridLayout *ngIf="!isMyInventory" row="2" col="1" colSpan="2" rows="40,40">
+        <Button row="0" text="Place Order" (tap)="placeOrder()" class="btn-previous" id="btnPrevious"></Button>
+        <Button row="1" text="Go To My Inventory" (tap)="toggleInventory()" class="btn-previous" id="btnPrevious"
+            style="color: blue"></Button>
+    </GridLayout>
+
+    <GridLayout *ngIf="isMyInventory" row="2" col="1" colSpan="2" rows="40,40">
+        <Button row="0" text="Return Items" (tap)="returnItems()" class="btn-previous" id="btnPrevious"></Button>
+        <Button row="1" text="Go To Central Inventory" (tap)="toggleInventory()" class="btn-previous" id="btnPrevious"
+            style="color: blue"></Button>
+    </GridLayout> -->
+</GridLayout>
